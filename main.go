@@ -41,7 +41,7 @@ func client() {
 	m.Unlock()
 
 	// get menu (request)
-	resp, err := http.Get("http://food_ordering:8011/menu")
+	resp, err := http.Get("http://network_food_ordering_1:8011/menu")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -116,7 +116,7 @@ func client() {
 	if err_marshall != nil {
 		log.Fatal(err_marshall)
 	}
-	resp, err = http.Post("http://food_ordering:8011/order", "application/json", bytes.NewBuffer(json_data))
+	resp, err = http.Post("http://network_food_ordering_1:8011/order", "application/json", bytes.NewBuffer(json_data))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -207,7 +207,7 @@ func make_review(restaurant_id int, receivedOrder models.OrderRegistered) {
 	if err_marshall != nil {
 		log.Fatal(err_marshall)
 	}
-	resp, err := http.Post("http://food_ordering:8011/rating", "application/json", bytes.NewBuffer(json_data))
+	resp, err := http.Post("http://network_food_ordering_1:8011/rating", "application/json", bytes.NewBuffer(json_data))
 	if err != nil {
 		log.Fatal(err)
 	}
