@@ -24,8 +24,8 @@ var client_id int = 1
 
 func make_clients() {
 	for {
-		time.Sleep(time.Duration(rand.Intn(4)+1) * time.Second)
-		if clients < 2 {
+		time.Sleep(time.Duration(rand.Intn(2)+4) * time.Second)
+		if clients < 4 {
 			w.Add(1)
 			go client()
 		}
@@ -61,7 +61,13 @@ func client() {
 	}
 
 	// choose dishes from menus
-	n_dishes := rand.Intn(3) + 1
+	n_dishes := 1
+	number := rand.Intn(10) + 1
+	if number > 4 && number <= 8 {
+		n_dishes = 2
+	} else if number > 8 {
+		n_dishes = 3
+	}
 	restaurant_ids := []int{}
 	dishes_ids := []int{}
 	for i := 0; i < n_dishes; i++ {
